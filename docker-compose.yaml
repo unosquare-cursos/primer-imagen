@@ -1,0 +1,19 @@
+services:
+  web:
+    image: nginx:latest
+    container_name: nginx-web
+    ports:
+      - "8080:80"
+    volumes:
+      - './html:/usr/share/nginx/html:ro'
+
+  cache:
+    image: redis:latest
+    container_name: redis-cache
+    ports:
+      - "6379:6379"
+
+  toolbox:
+    image: alpine:latest
+    container_name: alpine-toolbox
+    command: sh -c "while true; do sleep 3600; done"
